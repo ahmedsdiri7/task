@@ -1,0 +1,35 @@
+<div class="lists row">
+  <!-- Liste des employés -->
+  <div class="col-md-12 col-lg-6 col-xxxl-6">
+    <nb-card class="list-card">
+      <nb-card-header>Employé</nb-card-header>
+      <nb-card-body>
+        <nb-list>
+          <nb-list-item *ngFor="let employe of listemploye">
+            <a style="cursor: pointer;" (click)="employeSelection(employe)">
+              {{ employe.nom }} <!-- Assurez-vous que le nom de la propriété est correct -->
+            </a>
+          </nb-list-item>
+        </nb-list>
+      </nb-card-body>
+    </nb-card>
+  </div>
+
+  <!-- Liste des tâches -->
+  <div class="col-md-12 col-lg-6 col-xxxl-6">
+    <nb-card class="list-card" size="small">
+      <nb-card-header class="direction">
+        Tasks <span> {{ selectedEmploye?.nom || 'None Selected' }} </span> <!-- Assurez-vous que le nom de la propriété est correct -->
+      </nb-card-header>
+      <nb-card-body>
+        <nb-list>
+          <nb-list-item *ngFor="let task of listtasks">
+            <a style="cursor: pointer;" [attr.title]="task.typetask">
+              {{ task.dateDebut | date:'shortDate' }} - {{ task.typetask }}
+            </a>
+          </nb-list-item>
+        </nb-list>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

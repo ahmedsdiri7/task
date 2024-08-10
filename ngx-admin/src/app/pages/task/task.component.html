@@ -1,0 +1,51 @@
+<div class="container-xl">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h2>Gestion <b>Task</b></h2>
+                    </div>
+                    <div class="col-sm-7 text-right">
+                        <button (click)="onOpenDialogClick()" class="btn btn-secondary">
+                            <i class="material-icons">&#xE147;</i> 
+                            <span>Ajouter un Task</span>
+                        </button>
+                        <button (click)="exportAsXLSX()" class="btn btn-secondary">
+                            <i class="material-icons">&#xE24D;</i> 
+                            <span>Export to Excel</span>
+                        </button>						
+                    </div>
+                </div>
+            </div>
+            <table class="table table-striped table-hover">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Date Début</th>
+                    <th>Type Task</th>
+                    <th>Employé</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let task of listTasks">
+                    <td>{{task.reference}}</td>
+                    <td>{{ task.dateDebut }}</td>
+                    <td>{{ task.typetask }}</td>
+                    <td>{{ task.employe?.prenom }} {{ task.employe?.nom }}</td>
+                    <td>
+                      <button class="btn btn-link" title="Edit" (click)="updateTask(task.reference)">
+                        <i class="material-icons">&#xE8B8;</i>
+                      </button>
+                      <button class="btn btn-link text-danger" title="Delete" (click)="deleteTask(task.reference)">
+                        <i class="material-icons">&#xE5C9;</i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              
+        </div>
+    </div>
+</div>
